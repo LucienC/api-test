@@ -43,6 +43,12 @@ python manage.py migrate
 python manage.py import_data_from_csv
 ```
 
+- Populate lat long data of Region model from OpenStreetMap api
+```
+python manage.py populate_region_data_from_osm
+```
+
+
 - Run server
 ```
 python manage.py runserver

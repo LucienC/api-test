@@ -18,7 +18,7 @@ def get_osm_data(region_name, country_name="France", data_format="json"):
     :param data_format:
     :return:
     """
-    api_url = 'https://noominatim.openstreetmap.org/search?'
+    api_url = 'https://nominatim.openstreetmap.org/search?'
     params = 'country=' + country_name + '&state=' + region_name + '&format=' + data_format
     try:
         response = requests.get(api_url + params)
