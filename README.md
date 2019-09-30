@@ -70,3 +70,28 @@ python manage.py test
 ## Authors
 
 * **Lucien CARON**
+
+## Time Spend
+
+env. 4h
+
+## What is buggy
+
+1/ Wasn't really sure what you wanted in the 6th question, call the api on the fly or retrieve data from the api and populate the db?
+
+I started a branch to do it on the fly (osm-on-the-fly) but in this case it is a really bad idea so I didn't spend mutch 
+time testing it and instead choose to populate the data in the db using a command :)
+
+2/ I versioned the csv, which is bad, only to facilitate your testing
+
+3/ The data from the csv are not up to date, this is why some region doesn't have lat and long, 
+ex: http://127.0.0.1:8000/api/regions/25/
+
+Because open street map don't know BASSE-NORMANDIE anymore.
+https://nominatim.openstreetmap.org/search?country=France&state=BASSE-NORMANDIE&format=json
+
+## What could be improved
+
+- More tests
+- Better data validation
+- ...
