@@ -8,4 +8,4 @@ class RegionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Region
-        fields = ('code', 'name', 'totalPopulation', 'totalArea')
+        fields = ('code', 'name', 'totalPopulation', 'totalArea', 'lat', 'lon')

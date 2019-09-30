@@ -3,8 +3,10 @@ from django.db import models
 
 class Region(models.Model):
     """This class represents the Region model."""
-    code = models.CharField(max_length=80, blank=False, primary_key=True)
-    name = models.CharField(max_length=255, blank=False)
+    code = models.CharField(max_length=80, primary_key=True)
+    name = models.CharField(max_length=255)
+    lat = models.DecimalField(max_digits=9, decimal_places=7, null=True)
+    lon = models.DecimalField(max_digits=9, decimal_places=7, null=True)
 
     @property
     def total_population(self):
@@ -29,8 +31,8 @@ class Region(models.Model):
 class County(models.Model):
     """This class represents the County model."""
     # Code cannot be used as pk, use auto id
-    code = models.CharField(max_length=80, blank=False)
-    name = models.CharField(max_length=255, blank=False)
+    code = models.CharField(max_length=80)
+    name = models.CharField(max_length=255)
     region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name='departments')
 
     @property
@@ -53,11 +55,11 @@ class County(models.Model):
 
 class City(models.Model):
     """This class represents the City model."""
-    code_insee = models.CharField(max_length=80, blank=False, primary_key=True)
-    postal_code = models.CharField(max_length=255, blank=False)
-    name = models.CharField(max_length=255, blank=False)
-    population = models.FloatField(blank=False)
-    area = models.FloatField(blank=False)
+    code_insee = models.CharField(max_length=80, primary_key=True)
+    postal_code = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    population = models.FloatField(null=True)
+    area = models.FloatField(null=True)
     county = models.ForeignKey(County, on_delete=models.CASCADE, related_name='cities')
 
     def __str__(self):
